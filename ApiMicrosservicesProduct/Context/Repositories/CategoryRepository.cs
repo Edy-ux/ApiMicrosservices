@@ -40,7 +40,7 @@ public class CategoryRepository(AppDbContext appDbContext) : ICategoryRepository
         await _appDbContext.SaveChangesAsync();
         return entity;
     }
-    public async Task<Category> UpDateAsync(Category entity)
+    public async Task<Category> UpdateAsync(Category entity)
     {
         _appDbContext.Update(entity);
         await _appDbContext.SaveChangesAsync();

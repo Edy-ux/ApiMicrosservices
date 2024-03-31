@@ -7,7 +7,8 @@ public static class InfraestructureModule
           IConfiguration configuration)
     {
         return services.
-            AddDbContextDependecyInjection(configuration).
-            AddRepositoryDependecyInjection();
+             AddDbContextDependecyInjection(configuration)
+            .AddRepositoryDependecyInjection()
+            .AddServicesDependecyInjection();
     }
 }

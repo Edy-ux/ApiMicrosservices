@@ -2,7 +2,7 @@
 using ApiMicrosservicesProduct.Models;
 using AutoMapper;
 
-namespace ApiMicrosservicesProduct.Mappings;
+namespace ApiMicrosservicesProduct.Dtos.Mappings;
 
 public class MappingProfile : Profile
 {

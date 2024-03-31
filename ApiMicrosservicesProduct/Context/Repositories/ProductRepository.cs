@@ -57,7 +57,7 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
     }
 
 
-    public async Task<Product> UpDateAsync(Product entity)
+    public async Task<Product> UpdateAsync(Product entity)
     {
         _appDbContext.Update(entity);
         await _appDbContext.SaveChangesAsync();
