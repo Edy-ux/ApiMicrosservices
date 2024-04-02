@@ -10,7 +10,6 @@ public static class ServicesDependecyInjection
     {
         services.AddScoped<ICategoryService, CategoryDtoService>();
         services.AddScoped<IProductService, ProductDtoService>();
-
         services.AddAutoMapper(typeof(MappingProfile));
 
         return services;
