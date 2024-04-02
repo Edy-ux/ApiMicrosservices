@@ -2,8 +2,7 @@
 
 public static class InfraestructureModule
 {
-
-    public static IServiceCollection AddInfraEstructureModel(this IServiceCollection services, 
+public static IServiceCollection AddInfraEstructureModel(this IServiceCollection services, 
           IConfiguration configuration)
     {
         return services.
