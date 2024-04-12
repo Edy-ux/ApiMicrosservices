@@ -3,7 +3,7 @@ using ApiMicrosservicesProduct.Services;
 using ApiMicrosservicesProduct.Services.Interfaces;
 
 
-namespace ApiMicrosservicesProduct.Extensions;
+namespace ApiMicrosservicesProduct.Extensions.services;
 public static class ServicesDependecyInjection
 {
     public static IServiceCollection AddServicesDependecyInjection(this IServiceCollection services)

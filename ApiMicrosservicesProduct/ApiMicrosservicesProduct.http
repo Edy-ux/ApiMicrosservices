@@ -1,6 +1,6 @@
 @ApiMicrosservicesProduct_HostAddress = http://localhost:5293
 
-GET {{ApiMicrosservicesProduct_HostAddress}}/weatherforecast/
+GET {{ApiMicrosservicesProduct_HostAddress}}/
 Accept: application/json
 
 ###

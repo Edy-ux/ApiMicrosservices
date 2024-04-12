@@ -19,7 +19,7 @@ public class ProductDtoService : IProductService
         _productRepository = repository;
         _mapper = mapper;
     }
-    public async Task<IEnumerable<ProductDto>> GetItemsAsync()
+    public async Task<IEnumerable<ProductDto>> GetItemsDtoAsync()
     {
         var getProducts = await _productRepository.GetItemsAsync();
         if (getProducts == null || !getProducts.Any())
@@ -73,6 +73,7 @@ public class ProductDtoService : IProductService
                     Message = $"Product with {id} not found.",
                     Severity = "Not found.",
                     HttpStatus = HttpStatusCode.NotFound
+
                 });
                
             return _mapper.Map<ProductDto>(getProductId);

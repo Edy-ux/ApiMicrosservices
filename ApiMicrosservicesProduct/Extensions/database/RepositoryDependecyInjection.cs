@@ -1,7 +1,7 @@
 ﻿using ApiMicrosservicesProduct.Context.Repositories;
 using ApiMicrosservicesProduct.Models.Interfaces;
 
-namespace ApiMicrosservicesProduct.Extensions;
+namespace ApiMicrosservicesProduct.Extensions.database;
 
 public static class RepositoryDependecyInjection
 {

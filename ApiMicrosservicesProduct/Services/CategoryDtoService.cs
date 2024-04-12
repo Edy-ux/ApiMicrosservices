@@ -26,7 +26,7 @@ public class CategoryDtoService(ICategoryRepository categoryRepository, IMapper 
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<ProductDto>> GetItemsAsync()
+    public Task<IEnumerable<ProductDto>> GetItemsDtoAsync()
     {
         throw new NotImplementedException();
     }

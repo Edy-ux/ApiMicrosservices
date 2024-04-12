@@ -10,6 +10,6 @@ public class ProductDto
     public int Stock { get;  set; }
     public decimal Price { get;  set; }
     public List<string> Images { get;  set; } = [];
-    public string CategoryName { get; set; }
+    public string CategoryNameTest { get; set; }
     public int CategoryId { get; set; }
 }
