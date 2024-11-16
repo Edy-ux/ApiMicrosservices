@@ -12,13 +12,15 @@ public static class ProductServiceEndpoint
 
     public static void MapProductServiceEndpoint(this WebApplication app)
     {
-        app.MapGet("/api/v1/products", async (
+
+        var apiGroup = app.MapGroup("/api/v1/products");
+
+        apiGroup.MapGet("/" , async (
             [FromServices] IProductService service
          ) =>
         {
 
-
-            var products = await service.GetItemsDtoAsync();
+            var products = await service.GetItemsAsync();
 
             if (products == null || !products.Any()) return Results.NotFound("No products found.");
 
@@ -27,7 +29,7 @@ public static class ProductServiceEndpoint
 
         });
 
-        app.MapGet("/api/v1/products{id}", async(
+        apiGroup.MapGet("/{id}", async(
            [FromServices] IProductService service, int? id) 
            =>
         {
@@ -35,6 +37,8 @@ public static class ProductServiceEndpoint
             if (producById == null) return Results.NotFound("Product  Not Found");
             return Results.Ok(producById);
         });
+
+       // app.MapGet()
        
     }
 }

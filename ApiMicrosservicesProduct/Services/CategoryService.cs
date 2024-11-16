@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace ApiMicrosservicesProduct.Services;
 
-public class CategoryDtoService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
+public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository = categoryRepository;
     private readonly IMapper _mapper = mapper;
@@ -26,7 +26,7 @@ public class CategoryDtoService(ICategoryRepository categoryRepository, IMapper 
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<ProductDto>> GetItemsDtoAsync()
+    public Task<IEnumerable<ProductDto>> GetItemsAsync()
     {
         throw new NotImplementedException();
     }

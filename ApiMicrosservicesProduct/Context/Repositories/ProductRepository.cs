@@ -8,30 +8,30 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
 {
 
     private readonly AppDbContext _appDbContext = appDbContext;
-     
+
     public async Task<IEnumerable<Product>> GetItemsAsync()
     {
-        var product = await _appDbContext.Products
+
+        return await _appDbContext.Products
             .AsNoTracking().Include(x => x.Category)
             .ToListAsync();
-        return product;
-    }
 
+    }
     public async Task<IEnumerable<Product>> GetProductsByCategoriesAsync(string categoryStr)
     {
         return await _appDbContext.Products
             .AsNoTracking()
             .Include(x => x.Category)
-            .Where( x => x.Category.Name.Equals(categoryStr))
+            .Where(x => x.Category.Name.Equals(categoryStr))
             .ToListAsync();
     }
 
     public async Task<IEnumerable<Product>> GetSearchProductsAsync(string keyword)
     {
-       var products = await _appDbContext.Products
-            .AsNoTracking()
-            .Include(x => x.Category)
-            .ToListAsync();
+        var products = await _appDbContext.Products
+             .AsNoTracking()
+             .Include(x => x.Category)
+             .ToListAsync();
 
         return products;
     }

@@ -8,8 +8,8 @@ public static class ServicesDependecyInjection
 {
     public static IServiceCollection AddServicesDependecyInjection(this IServiceCollection services)
     {
-        services.AddScoped<ICategoryService, CategoryDtoService>();
-        services.AddScoped<IProductService, ProductDtoService>();
+        services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IProductService, ProductService>();
         services.AddAutoMapper(typeof(MappingProfile));
 
         return services;

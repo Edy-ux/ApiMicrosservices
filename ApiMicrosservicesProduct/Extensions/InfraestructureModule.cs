@@ -3,8 +3,8 @@ namespace ApiMicrosservicesProduct.Extensions.database;
 
 public static class InfraestructureModule
 {
-public static IServiceCollection AddInfraEstructureModel(this IServiceCollection services, 
-          IConfiguration configuration)
+    public static IServiceCollection AddInfraEstructureModel(this IServiceCollection services,
+              IConfiguration configuration)
     {
         return services.
              AddDbContextDependecyInjection(configuration)

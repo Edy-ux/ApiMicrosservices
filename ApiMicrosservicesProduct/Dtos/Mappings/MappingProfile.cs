@@ -11,6 +11,6 @@ public class MappingProfile : Profile
         CreateMap<CategoryDto, Category>().ReverseMap();
         CreateMap<ProductDto, Product>().ReverseMap();
         CreateMap<Product, ProductDto>()
-            .ForMember(x => x.CategoryNameTest, m => m.MapFrom(x => x.Category.Name));
+            .ForMember(x => x.CategoryName, m => m.MapFrom(x => x.Category.Name));
     }
 }

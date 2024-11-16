@@ -12,8 +12,6 @@ public class Product
     public Category Category { get; protected set; }
     public int CategoryId { get; set; }
 
- 
-
     public Product(int id, string name, string description, int stock, decimal price, List<string> images, int categoryId)
     {
         Id = id;
