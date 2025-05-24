@@ -11,7 +11,7 @@ namespace ApiMicrosservicesProduct.Services;
 public class ProductService : IProductService
 {
 
-    private readonly IProductRepository _productRepository;
+    private IProductRepository _productRepository;
     private readonly IMapper _mapper;
 
     public ProductService(IMapper mapper, IProductRepository repository)
@@ -21,17 +21,24 @@ public class ProductService : IProductService
     }
     public async Task<IEnumerable<ProductDto>> GetItemsAsync()
     {
-        var getProducts = await _productRepository.GetItemsAsync();
+        IEnumerable<Product> getProducts = await _productRepository.GetItemsAsync();
+
         if (getProducts == null || !getProducts.Any())
         {
             return Enumerable.Empty<ProductDto>();
         }
+
         return _mapper.Map<IEnumerable<ProductDto>>(getProducts);
     }
     public async Task<IEnumerable<ProductDto>> GetProductsByCategoriesAsync(string categoryStr)
     {
         var productsByCategory = await _productRepository.GetProductsByCategoriesAsync(categoryStr);
         return _mapper.Map<IEnumerable<ProductDto>>(productsByCategory);
+    }
+    public async Task<IEnumerable<ProductDto>> GetSearchProductsAsync(string keyword)
+    {
+        var getSearchProduct = await _productRepository.GetSearchProductsAsync(keyword);
+        return _mapper.Map<IEnumerable<ProductDto>>(getSearchProduct);
     }
     public async Task AddAsync(ProductDto entity)
     {
@@ -54,11 +61,6 @@ public class ProductService : IProductService
             throw new Exception("Unexpected error ocurred while adding the product", ex);
         }
     }
-    public async Task<IEnumerable<ProductDto>> GetSearchProductsAsync(string keyword)
-    {
-        var getSearchProduct = await _productRepository.GetSearchProductsAsync(keyword);
-        return _mapper.Map<IEnumerable<ProductDto>>(getSearchProduct);
-    }
     public async Task<ProductDto> GetByIdAsync(int? id)
     {
         if (id <= 0 || id == null)
@@ -67,14 +69,18 @@ public class ProductService : IProductService
         try
         {
             var getProductId = await _productRepository.GetByIdAsync(id);
-          
-
+            if (getProductId == null)
+                throw new RequestException(new RequestError
+                {
+                    Message = $"Product with {id} not found.",
+                    Severity = "Not found.", 
+                    HttpStatus = System.Net.HttpStatusCode.NotFound
+                });
             return _mapper.Map<ProductDto>(getProductId);
-
         }
         catch (Exception ex)
         {
-          throw new Exception("", ex);
+            throw new Exception("An unexpected error ocurred while processing the request.", ex);
         }
     }
     public async Task DeleteAsync(int? id)

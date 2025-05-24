@@ -22,7 +22,7 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
         return await _appDbContext.Products
             .AsNoTracking()
             .Include(x => x.Category)
-            .Where(x => x.Category.Name.Equals(categoryStr))
+            .Where(x => x.Category.Name.Equals(categoryStr, StringComparison.Ordinal))
             .ToListAsync();
     }
 
@@ -33,7 +33,12 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
              .Include(x => x.Category)
              .ToListAsync();
 
-        return products;
+        var filteredProducts = products
+            .Where(x =>
+            x.Name.ToLower().Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
+            x.Category.Name.Contains(keyword, StringComparison.CurrentCultureIgnoreCase));
+
+        return filteredProducts;
     }
     public async Task<Product> GetByIdAsync(int? id)
     {

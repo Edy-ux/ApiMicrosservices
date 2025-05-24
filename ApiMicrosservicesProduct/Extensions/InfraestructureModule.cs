@@ -1,4 +1,5 @@
-﻿using ApiMicrosservicesProduct.Extensions.services;
+﻿using ApiMicrosservicesProduct.Endpoints;
+using ApiMicrosservicesProduct.Extensions.services;
 namespace ApiMicrosservicesProduct.Extensions.database;
 
 public static class InfraestructureModule

@@ -17,8 +17,8 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(x => x.Price).HasPrecision(10, 2).IsRequired();
 
 
-        List<Product> products = new()
-       {
+        var products = new[]
+        {
             new Product(
                 1,
                 "Big Mac®",
@@ -55,7 +55,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
                 ),
                   new Product(
                 4,
-                "\r\nBacon, Egg & Cheese Biscuit",
+                "Bacon, Egg & Cheese Biscuit",
                 "The McDonald\'s Bacon, Egg & Cheese Biscuit breakfast sandwich features a warm, buttermilk biscuit brushed with real butter, thick cut Applewood smoked bacon, a fluffy folded egg, and a slice of melty American cheese. There are 460 calories in a Bacon, Egg & Cheese Biscuit at McDonald\'s. Try one today with a Premium Roast Coffee and order with Mobile Order & Pay on the McDonald's App!",
                 2,
                 9.99m,
