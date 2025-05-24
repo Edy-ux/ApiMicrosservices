@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <InvariantGlobalization>false</InvariantGlobalization>
+    <NoWarn>CS8600;CS8601;CS8602;CS8603;CS8604;CS8618</NoWarn> <!-- Suprime avisos de referência nula -->
   </PropertyGroup>
 
   <ItemGroup>
